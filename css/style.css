@@ -93,7 +93,7 @@ a {
 .top__inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 14px 18px;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -103,7 +103,7 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-width: 220px;
+  min-width: auto;
 }
 .brand__logo {
   height: 32px;
@@ -125,6 +125,7 @@ a {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: flex-end;
 }
 .nav__link {
@@ -134,19 +135,15 @@ a {
   background: rgba(255, 255, 255, 0.34);
   color: var(--brand-accent);
   font-size: 13px;
-  transition:
-    transform 240ms var(--ease),
-    background 240ms var(--ease),
-    border-color 240ms var(--ease),
-    color 240ms var(--ease);
+  transition: none;
 }
 .nav__link:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.5);
-  border-color: color-mix(in srgb, var(--brand-ink) 18%, transparent);
+  transform: none;
+  background: rgba(255, 255, 255, 0.34);
+  border-color: color-mix(in srgb, var(--brand-ink) 12%, transparent);
 }
 .nav__link.is-active {
-  border-color: color-mix(
+  /* border-color: color-mix(
     in srgb,
     var(--brand-accent) 40%,
     color-mix(in srgb, var(--brand-ink) 14%, transparent)
@@ -155,7 +152,7 @@ a {
     in srgb,
     var(--brand-accent) 12%,
     rgba(255, 255, 255, 0.44)
-  );
+  ); */
 }
 
 .hero {
@@ -164,7 +161,7 @@ a {
 .hero__inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 18px;
+  padding: 0 24px;
   display: grid;
   grid-template-columns: 1.35fr 0.85fr;
   gap: 26px;
@@ -198,7 +195,7 @@ a {
 }
 .hero__title {
   margin: 0 0 12px;
-  font-size: clamp(28px, 4vw, 46px);
+  font-size: clamp(16px, 2vw, 24px);
   letter-spacing: -0.05em;
   line-height: 1.08;
 }
@@ -231,8 +228,8 @@ a {
   justify-content: flex-end;
 }
 .hero__image {
-  width: min(420px, 100%);
-  max-width: 420px;
+  width: min(200px, 100%);
+  max-width: 200px;
   height: auto;
   border: none;
   box-shadow: none;
