@@ -163,9 +163,9 @@ a {
   margin: 0 auto;
   padding: 0 24px;
   display: grid;
-  grid-template-columns: 1.35fr 0.85fr;
-  gap: 26px;
-  align-items: center;
+  grid-template-columns: auto 1fr; /* đảo lại */
+  gap: 66px;
+  align-items: center; /* căn giữa */
 }
 .kicker {
   display: inline-flex;
@@ -225,8 +225,12 @@ a {
 
 .hero__frame {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
+.hero__copy {
+  max-width: 700px;
+}
+
 .hero__image {
   width: min(200px, 100%);
   max-width: 200px;
@@ -471,64 +475,135 @@ a {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 430px) {
+  /* ===== HERO ===== */
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
 
-@media (max-width: 640px) {
+  .hero__frame {
+    order: -1;
+  }
+
+  .hero__frame img {
+    width: 88px;
+  }
+
+  .hero__copy {
+    max-width: 100%;
+  }
+
+  .hero__title {
+    font-size: 16px;
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  /* ===== HEADER ===== */
   .top__inner {
-    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-  .brand {
-    min-width: auto;
-  }
+
   .nav {
-    gap: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
   }
+
   .nav__link {
     font-size: 12px;
-    padding: 8px 10px;
+    padding: 6px 10px;
   }
 
-  .hero {
-    padding-top: 26px;
-  }
-  .hero__title {
-    letter-spacing: -0.045em;
-  }
-
-  .story {
-    padding: 14px;
-  }
-  .story__title {
-    font-size: 28px;
-  }
-
-  /* Mobile gallery becomes swipeable */
-  .gallery {
+  /* ===== COLLECTION ===== */
+  .collection__grid {
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 82%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* ===== GALLERY: 1 ẢNH / 1 HÀNG ===== */
+  .gallery {
+    display: grid !important;
+    grid-template-columns: 1fr; /* ✅ FIX */
     gap: 12px;
-    padding-bottom: 6px;
-    -webkit-overflow-scrolling: touch;
   }
-  .gallery::-webkit-scrollbar {
-    height: 8px;
-  }
-  .gallery::-webkit-scrollbar-thumb {
-    background: color-mix(in srgb, var(--ink) 16%, transparent);
-    border-radius: 999px;
-  }
-  .shot {
-    scroll-snap-align: start;
-  }
+
   .shot--hero {
-    grid-column: auto;
+    grid-column: span 1;
   }
-  .gallery .shot:nth-child(2),
-  .gallery .shot:nth-child(3),
-  .gallery .shot:nth-child(4),
-  .gallery .shot:nth-child(5) {
-    grid-column: auto;
+
+  .shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+  }
+
+  /* ===== SPACING ===== */
+  .hero,
+  .collection,
+  .footer {
+    padding: 20px 16px;
+  }
+}
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 16px;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+
+  font-size: 18px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+
+  z-index: 9999;
+}
+
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===== FINAL FIX MOBILE GALLERY ===== */
+@media (max-width: 768px) {
+  .gallery {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+
+    overflow-x: hidden !important; /* 🔥 chặn scroll ngang */
+  }
+
+  .shot,
+  .shot--hero {
+    grid-column: span 1 !important;
+    width: 100%;
+  }
+
+  .shot img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
