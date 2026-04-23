@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="r">
+      <rect x="0" y="0" width="64" height="64" rx="14" ry="14"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect width="64" height="64" fill="#EFEEE4"/>
+    <image href="logo.jpg" x="2" y="2" width="60" height="60" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+</svg>
