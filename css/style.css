@@ -143,16 +143,6 @@ a {
   border-color: color-mix(in srgb, var(--brand-ink) 12%, transparent);
 }
 .nav__link.is-active {
-  /* border-color: color-mix(
-    in srgb,
-    var(--brand-accent) 40%,
-    color-mix(in srgb, var(--brand-ink) 14%, transparent)
-  );
-  background: color-mix(
-    in srgb,
-    var(--brand-accent) 12%,
-    rgba(255, 255, 255, 0.44)
-  ); */
 }
 
 .hero {
@@ -163,9 +153,9 @@ a {
   margin: 0 auto;
   padding: 0 24px;
   display: grid;
-  grid-template-columns: auto 1fr; /* đảo lại */
+  grid-template-columns: auto 1fr;
   gap: 66px;
-  align-items: center; /* căn giữa */
+  align-items: center;
 }
 .kicker {
   display: inline-flex;
@@ -285,7 +275,6 @@ a {
   min-height: 125vh;
   --v: 0;
   color: var(--section-ink, var(--ink));
-  /* Keep content crisp; animate atmosphere instead */
   opacity: 1;
   transform: translateY(calc((1 - var(--v)) * 10px));
   transition: transform 260ms linear;
@@ -463,7 +452,7 @@ a {
   }
 }
 
-/* Mobile */
+/* Mobile Tablet */
 @media (max-width: 920px) {
   .hero__inner {
     grid-template-columns: 1fr;
@@ -475,6 +464,8 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== MOBILE W430px ===== */
 @media (max-width: 430px) {
   /* ===== HERO ===== */
   .hero__inner {
@@ -482,6 +473,7 @@ a {
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
+    padding: 0 16px;
   }
 
   .hero__frame {
@@ -521,38 +513,91 @@ a {
     padding: 6px 10px;
   }
 
-  /* ===== COLLECTION ===== */
+  /* ===== STORY CONTAINER ===== */
+  .story {
+    padding: 12px; /* 🔥 giảm từ 18px xuống 12px */
+    background: rgba(255, 255, 255, 0.62);
+    border-radius: var(--radius);
+    border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    overflow: hidden;
+  }
+
+  /* ===== GALLERY - RESIZE & CENTER ===== */
+  .gallery {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px; /* 🔥 gap giữa các shot */
+    width: 100%;
+    max-width: 100%;
+    margin: 10px 0 0 0;
+    overflow: hidden;
+    padding: 10px; /* 🔥 margin 10px xung quanh gallery */
+    padding-top: 0;
+  }
+
+  /* ===== SHOT ITEMS ===== */
+  .shot,
+  .shot--hero {
+    grid-column: span 1 !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+    border-radius: var(--radius-sm);
+    aspect-ratio: auto;
+    margin: 0; /* 🔥 reset margin */
+  }
+
+  /* ===== IMAGES ===== */
+  .shot img,
+  .shot--hero img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    display: block;
+    object-fit: contain; /* 🔥 resize nhưng không crop */
+  }
+
+  /* loại bỏ hover effect */
+  .shot:hover img {
+    transform: scale(1);
+    filter: none;
+  }
+
+  /* ===== COLLECTION GRID ===== */
   .collection__grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
-  }
-
-  /* ===== GALLERY: 1 ẢNH / 1 HÀNG ===== */
-  .gallery {
-    display: grid !important;
-    grid-template-columns: 1fr; /* ✅ FIX */
-    gap: 12px;
-  }
-
-  .shot--hero {
-    grid-column: span 1;
-  }
-
-  .shot img {
     width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
+    min-width: 0;
+    padding: 0 16px;
+  }
+
+  .collection__sticky {
+    padding: 20px 0 52px;
   }
 
   /* ===== SPACING ===== */
-  .hero,
-  .collection,
+  .hero {
+    padding: 20px 0 18px;
+  }
+
+  .collection {
+    min-height: auto;
+  }
+
   .footer {
-    padding: 20px 16px;
+    padding: 34px 0 54px;
+  }
+
+  .footer__inner {
+    padding: 18px 16px;
   }
 }
+
 #backToTop {
   position: fixed;
   bottom: 20px;
@@ -583,27 +628,4 @@ a {
 #backToTop.show {
   opacity: 1;
   pointer-events: auto;
-}
-
-/* ===== FINAL FIX MOBILE GALLERY ===== */
-@media (max-width: 768px) {
-  .gallery {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 12px;
-
-    overflow-x: hidden !important; /* 🔥 chặn scroll ngang */
-  }
-
-  .shot,
-  .shot--hero {
-    grid-column: span 1 !important;
-    width: 100%;
-  }
-
-  .shot img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
 }
