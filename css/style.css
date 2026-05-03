@@ -146,16 +146,22 @@ a {
 }
 
 .hero {
-  padding: 44px 0 18px;
+  padding: 54px 18px 28px;
 }
 .hero__inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 40px 24px 36px 110px;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 66px;
+  gap: 56px;
   align-items: center;
+  min-height: 240px;
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  box-shadow: 0 22px 54px color-mix(in srgb, var(--ink) 10%, transparent);
 }
 .kicker {
   display: inline-flex;
@@ -185,14 +191,13 @@ a {
 }
 .hero__title {
   margin: 0 0 12px;
-  font-size: clamp(16px, 2vw, 24px);
+  font-size: clamp(14px, 1.6vw, 20px);
   letter-spacing: -0.05em;
-  line-height: 1.08;
+  line-height: 1.25;
 }
 .hero__lead {
-  margin: 0 0 18px;
   color: var(--accent-2);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.7;
   max-width: 62ch;
 }
@@ -222,8 +227,8 @@ a {
 }
 
 .hero__image {
-  width: min(200px, 100%);
-  max-width: 200px;
+  width: min(170px, 100%);
+  max-width: 170px;
   height: auto;
   border: none;
   box-shadow: none;
@@ -454,8 +459,17 @@ a {
 
 /* Mobile Tablet */
 @media (max-width: 920px) {
+  .hero {
+    padding: 32px 14px 24px;
+  }
   .hero__inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    padding: 28px 14px;
+    min-height: 220px;
+    gap: 24px;
+    max-width: 980px;
+    width: 100%;
   }
   .hero__frame {
     justify-content: flex-start;
@@ -468,20 +482,26 @@ a {
 /* ===== MOBILE W430px ===== */
 @media (max-width: 430px) {
   /* ===== HERO ===== */
+  .hero {
+    padding: 24px 14px 20px;
+  }
   .hero__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 0 16px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    padding: 20px 14px;
+    min-height: 180px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .hero__frame {
-    order: -1;
+    order: 0;
   }
 
   .hero__frame img {
-    width: 88px;
+    width: 92px;
   }
 
   .hero__copy {
@@ -489,9 +509,13 @@ a {
   }
 
   .hero__title {
-    font-size: 16px;
-    line-height: 1.4;
+    font-size: 13px;
+    line-height: 1.25;
     text-wrap: balance;
+  }
+
+  .hero__lead {
+    font-size: 13px;
   }
 
   /* ===== HEADER ===== */
@@ -582,7 +606,7 @@ a {
 
   /* ===== SPACING ===== */
   .hero {
-    padding: 20px 0 18px;
+    padding: 20px 14px 18px;
   }
 
   .collection {
